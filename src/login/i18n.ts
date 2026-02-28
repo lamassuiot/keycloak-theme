@@ -4,6 +4,14 @@ import type { ThemeName } from "../kc.gen";
 /** @see: https://docs.keycloakify.dev/features/i18n */
 const { I18nProvider, useI18n } = i18nBuilder
     .withThemeName<ThemeName>()
+    .withExtraLanguages({
+        eu: {
+            // cspell: disable-next-line
+            label: "Euskera",
+            //@ts-ignore
+            getMessages: () => import("./i18n.eu")
+        }
+    })
     .withCustomTranslations({
         en: {
             welcomeMessage:
@@ -53,7 +61,22 @@ const { I18nProvider, useI18n } = i18nBuilder
             "organization.pickPlaceholder":
                 "Selecciona una organització per continuar",
             "identity-provider-login-last-used": "Darrer ús"
-        }
+        },
+        eu: {
+            welcomeMessage:
+                "Ongi etorri Lamassu IoT-ra — plangintza eta antolaketa ezin hobe baterako zure sarbidea.",
+            loginAccountTitle: "Hasi saioa zure kontuan",
+            registerTitle: "Erregistratu kontu berri bat",
+            showcaseTitle: "PKI industriala, muturretik muturrerako IoT identitate-kudeaketarako",
+            showcaseDescription:
+                "Gailuen jaulkipena, balidazioa eta bizi-zikloaren kudeaketa zentralizatu operazio industrialetarako prestatutako plataforma batean.",
+            email: "E-maila",
+            noAccount: "Ez duzu konturik?",
+            doRegister: "Erregistratu",
+            "organization.selectTitle": "Aukeratu zure erakundea",
+            "organization.pickPlaceholder": "Aukeratu erakunde bat jarraitzeko",
+            "identity-provider-login-last-used": "Azkenekoz erabilia"
+        },
     })
     .build();
 
