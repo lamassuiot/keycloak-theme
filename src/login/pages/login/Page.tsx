@@ -18,6 +18,7 @@ export function Page() {
                 !kcContext.messagesPerField.existsError("username", "password")
             }
             headerNode={msg("loginAccountTitle")}
+            subHeaderNode={kcContext.realm.displayName || kcContext.realm.name}
             displayInfo={
                 kcContext.realm.password &&
                 kcContext.realm.registrationAllowed &&

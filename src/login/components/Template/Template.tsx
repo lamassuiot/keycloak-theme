@@ -22,7 +22,7 @@ import { useKcContext } from "../../KcContext";
 import companylogo from "./../../assets/img/auth-logo.svg";
 import { useInitializeTemplate } from "./useInitializeTemplate";
 
-const APP_NAME = "Lamassu IoT.";
+const APP_NAME = "Lamassu IoT";
 const SHOWCASE_TAGS = ["#OPENSOURCE", "#INDUSTRY 4.0", "#CYBER SECURE OT"];
 
 export function Template(props: {
@@ -30,6 +30,7 @@ export function Template(props: {
     displayMessage?: boolean;
     displayRequiredFields?: boolean;
     headerNode: ReactNode;
+    subHeaderNode?: ReactNode;
     socialProvidersNode?: ReactNode;
     infoNode?: ReactNode;
     documentTitle?: string;
@@ -41,6 +42,7 @@ export function Template(props: {
         displayMessage = true,
         displayRequiredFields = false,
         headerNode,
+        subHeaderNode = null,
         socialProvidersNode = null,
         infoNode = null,
         documentTitle,
@@ -95,7 +97,11 @@ export function Template(props: {
                     {/* Logo and welcome message */}
                     <div className="flex flex-col items-center justify-center gap-3 mt-4">
                         <div className="mb-4 flex items-center gap-3">
-                            <img src={companylogo} alt="Logo" />
+                            <img
+                                src={companylogo}
+                                alt="Logo"
+                                className="w-11 h-auto shrink-0"
+                            />
                             <span className="text-xl"> {APP_NAME}</span>
                         </div>
                     </div>
@@ -112,7 +118,14 @@ export function Template(props: {
                                             auth.showUsername &&
                                             !auth.showResetCredentials
                                         ) ? (
-                                            <h1 className="text-xl">{headerNode}</h1>
+                                            <div className="space-y-1">
+                                                <h1 className="text-xl">{headerNode}</h1>
+                                                {subHeaderNode !== null && (
+                                                    <p className="text-sm text-muted-foreground">
+                                                        {subHeaderNode}
+                                                    </p>
+                                                )}
+                                            </div>
                                         ) : (
                                             <div
                                                 id="kc-username"
@@ -251,16 +264,18 @@ export function Template(props: {
             </div>
 
             <div className="kc-right-showcase relative hidden overflow-hidden lg:block lg:order-1">
-                <div className="kc-right-showcase__content">
-                    <p className="kc-right-showcase__brand">LAMASSU IOT</p>
+                <div className="kc-right-showcase__content mt-5">
+                    <img
+                        src={`${import.meta.env.BASE_URL}lamassu-brand.png`}
+                        alt="Lamassu IoT"
+                        className="kc-right-showcase__brand"
+                    />
                     <p className="kc-right-showcase__eyebrow">IDENTITY BY DESIGN</p>
                     <h2 className="kc-right-showcase__title">
-                        PKI industrial para gestionar identidades IoT de extremo a
-                        extremo
+                        {msg("showcaseTitle")}
                     </h2>
                     <p className="kc-right-showcase__description">
-                        Centraliza emision, validacion y ciclo de vida de dispositivos
-                        en una plataforma lista para operacion industrial.
+                        {msg("showcaseDescription")}
                     </p>
                     <div className="kc-right-showcase__tags">
                         {SHOWCASE_TAGS.map((tag) => (

@@ -10,6 +10,9 @@ const { I18nProvider, useI18n } = i18nBuilder
                 "Welcome to Lamassu IoT - Your gateway to seamless planning and organization.",
             loginAccountTitle: "Login to your account",
             registerTitle: "Register a new account",
+            showcaseTitle: "Industrial PKI for end-to-end IoT identity management",
+            showcaseDescription:
+                "Centralize device issuance, validation, and lifecycle management on a platform ready for industrial operations.",
             email: "Email",
             noAccount: "Don't have an account?",
             doRegister: "Sign up",
@@ -22,6 +25,10 @@ const { I18nProvider, useI18n } = i18nBuilder
                 "Bienvenido a Lamassu IoT: tu puerta de entrada a una planificación y organización fluidas.",
             loginAccountTitle: "Inicia sesión en tu cuenta",
             registerTitle: "Crear una cuenta nueva",
+            showcaseTitle:
+                "PKI industrial para gestionar identidades IoT de extremo a extremo",
+            showcaseDescription:
+                "Centraliza la emisión, validación y el ciclo de vida de los dispositivos en una plataforma lista para la operación industrial.",
             email: "Correo electrónico",
             doRegister: "Regístrate",
             noAccount: "¿No tienes una cuenta?",
@@ -35,6 +42,10 @@ const { I18nProvider, useI18n } = i18nBuilder
                 "Benvingut a Lamassu IoT: la teva porta d'entrada a una planificació i organització fluides.",
             loginAccountTitle: "Inicia sessió al teu compte",
             registerTitle: "Crea un compte nou",
+            showcaseTitle:
+                "PKI industrial per gestionar identitats IoT de cap a cap",
+            showcaseDescription:
+                "Centralitza l'emissió, la validació i el cicle de vida dels dispositius en una plataforma preparada per a l'operació industrial.",
             email: "Correu electrònic",
             doRegister: "Registra't",
             noAccount: "No tens cap compte?",

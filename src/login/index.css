@@ -258,9 +258,9 @@
 
 .kc-right-showcase__brand {
     margin: 0;
-    font-size: 1.85rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
+    width: min(220px, 100%);
+    height: auto;
+    display: block;
 }
 
 .kc-right-showcase__eyebrow {
