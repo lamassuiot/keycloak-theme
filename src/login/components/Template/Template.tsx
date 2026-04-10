@@ -84,7 +84,7 @@ export function Template(props: {
         <div className="relative grid min-h-svh bg-white dark:bg-background lg:grid-cols-2">
             <div className="absolute top-4 left-4 z-20 flex gap-2 lg:top-4 lg:left-9">
                 <Button type="button" variant="outline" size="icon" asChild>
-                    <a href={kcContext.client?.baseUrl ?? redirectUrlOrigin}>
+                    <a href={redirectUrlOrigin}>
                         <FiHome />
                     </a>
                 </Button>

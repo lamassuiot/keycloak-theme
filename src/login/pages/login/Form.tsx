@@ -77,7 +77,7 @@ export function Form() {
                                             "username",
                                             "password"
                                         )}
-                                        className="h-[3.25rem] rounded-lg border-[#dddfdf] bg-[#ffffff] px-4 text-[0.96rem] shadow-none focus-visible:border-[#592ff0] focus-visible:ring-[#592ff0]/15 dark:border-white/10 dark:bg-white/5"
+                                        className="rounded-lg border-[#dddfdf] bg-[#ffffff] shadow-none focus-visible:border-[#592ff0] focus-visible:ring-[#592ff0]/15 dark:border-white/10 dark:bg-white/5"
                                     />
                                     {kcContext.messagesPerField.existsError(
                                         "username",
@@ -105,7 +105,7 @@ export function Form() {
                                 <FieldLabel htmlFor="password" className="sr-only">
                                     {msg("password")}
                                 </FieldLabel>
-                                <InputGroup className="h-[3.25rem] rounded-lg border-[#dddfdf] bg-[#ffffff] shadow-none focus-within:border-[#592ff0] dark:border-white/10 dark:bg-white/5">
+                                <InputGroup className="rounded-lg border-[#dddfdf] bg-[#ffffff] shadow-none focus-within:border-[#592ff0] dark:border-white/10 dark:bg-white/5">
                                     <InputGroupInput
                                         tabIndex={3}
                                         type="password"
@@ -117,7 +117,7 @@ export function Form() {
                                             "username",
                                             "password"
                                         )}
-                                        className="h-full rounded-lg px-4 text-[0.96rem]"
+                                        className="rounded-lg text-[0.96rem]"
                                     />
                                     <InputGroupAddon align="inline-end">
                                         <PasswordVisibilityButton
@@ -157,7 +157,7 @@ export function Form() {
 
                                 <Button
                                     disabled={isLoginButtonDisabled}
-                                    className="h-12 w-full rounded-lg bg-[#151515] text-white shadow-none hover:bg-black"
+                                    className="w-full"
                                     tabIndex={7}
                                     name="login"
                                     id="kc-login"
