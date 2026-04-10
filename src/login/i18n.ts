@@ -17,6 +17,7 @@ const { I18nProvider, useI18n } = i18nBuilder
             welcomeMessage:
                 "Welcome to Lamassu IoT - Your gateway to seamless planning and organization.",
             loginAccountTitle: "Login to your account",
+            loginAccountSubtitle: "Choose how you'd like to sign in",
             registerTitle: "Register a new account",
             showcaseTitle: "Industrial PKI for end-to-end IoT identity management",
             showcaseDescription:
@@ -32,6 +33,7 @@ const { I18nProvider, useI18n } = i18nBuilder
             welcomeMessage:
                 "Bienvenido a Lamassu IoT: tu puerta de entrada a una planificación y organización fluidas.",
             loginAccountTitle: "Inicia sesión en tu cuenta",
+            loginAccountSubtitle: "Elige cómo deseas iniciar sesión",
             registerTitle: "Crear una cuenta nueva",
             showcaseTitle:
                 "PKI industrial para gestionar identidades IoT de extremo a extremo",
@@ -41,33 +43,33 @@ const { I18nProvider, useI18n } = i18nBuilder
             doRegister: "Regístrate",
             noAccount: "¿No tienes una cuenta?",
             "organization.selectTitle": "Elige tu organización",
-            "organization.pickPlaceholder":
-                "Selecciona una organización para continuar",
+            "organization.pickPlaceholder": "Selecciona una organización para continuar",
             "identity-provider-login-last-used": "Último uso"
         },
         ca: {
             welcomeMessage:
                 "Benvingut a Lamassu IoT: la teva porta d'entrada a una planificació i organització fluides.",
             loginAccountTitle: "Inicia sessió al teu compte",
+            loginAccountSubtitle: "Tria com vols iniciar la sessió",
             registerTitle: "Crea un compte nou",
-            showcaseTitle:
-                "PKI industrial per gestionar identitats IoT de cap a cap",
+            showcaseTitle: "PKI industrial per gestionar identitats IoT de cap a cap",
             showcaseDescription:
                 "Centralitza l'emissió, la validació i el cicle de vida dels dispositius en una plataforma preparada per a l'operació industrial.",
             email: "Correu electrònic",
             doRegister: "Registra't",
             noAccount: "No tens cap compte?",
             "organization.selectTitle": "Tria la teva organització",
-            "organization.pickPlaceholder":
-                "Selecciona una organització per continuar",
+            "organization.pickPlaceholder": "Selecciona una organització per continuar",
             "identity-provider-login-last-used": "Darrer ús"
         },
         eu: {
             welcomeMessage:
                 "Ongi etorri Lamassu IoT-ra — plangintza eta antolaketa ezin hobe baterako zure sarbidea.",
             loginAccountTitle: "Hasi saioa zure kontuan",
+            loginAccountSubtitle: "Aukeratu nola hasi nahi duzun saioa",
             registerTitle: "Erregistratu kontu berri bat",
-            showcaseTitle: "PKI industriala, muturretik muturrerako IoT identitate-kudeaketarako",
+            showcaseTitle:
+                "PKI industriala, muturretik muturrerako IoT identitate-kudeaketarako",
             showcaseDescription:
                 "Gailuen jaulkipena, balidazioa eta bizi-zikloaren kudeaketa zentralizatu operazio industrialetarako prestatutako plataforma batean.",
             email: "E-maila",
@@ -76,7 +78,7 @@ const { I18nProvider, useI18n } = i18nBuilder
             "organization.selectTitle": "Aukeratu zure erakundea",
             "organization.pickPlaceholder": "Aukeratu erakunde bat jarraitzeko",
             "identity-provider-login-last-used": "Azkenekoz erabilia"
-        },
+        }
     })
     .build();
 

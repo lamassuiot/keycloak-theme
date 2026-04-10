@@ -60,7 +60,8 @@ export function Template(props: {
 
     useEffect(() => {
         document.title =
-            documentTitle ?? msgStr("loginTitle", kcContext.realm.displayName || kcContext.realm.name);
+            documentTitle ??
+            msgStr("loginTitle", kcContext.realm.displayName || kcContext.realm.name);
     }, []);
 
     useSetClassName({
@@ -75,53 +76,53 @@ export function Template(props: {
 
     useInitializeTemplate();
 
+    console.log("kcContext", kcContext);
+    console.log("kcContext.client?.baseUrl", kcContext.client?.baseUrl);
+    console.log("redirectUrlOrigin", redirectUrlOrigin);
+
     return (
-        <div className="grid min-h-svh lg:grid-cols-2 bg-white dark:bg-background lg:bg-transparent">
+        <div className="relative grid min-h-svh bg-white dark:bg-background lg:grid-cols-2">
+            <div className="absolute top-4 left-4 z-20 flex gap-2 lg:top-4 lg:left-9">
+                <Button type="button" variant="outline" size="icon" asChild>
+                    <a href={kcContext.client?.baseUrl ?? redirectUrlOrigin}>
+                        <FiHome />
+                    </a>
+                </Button>
+
+                <Languages />
+
+                {kcContext.darkMode !== false && <ModeToggle />}
+            </div>
+
             {/* Main content */}
-            <div className="flex flex-col gap-4 px-0 py-0 pb-6 lg:p-6 lg:md:p-10 lg:pt-10 min-h-screen lg:min-h-0 lg:order-2">
-                {/*  navigation */}
-                <div className="absolute top-4 start-4 z-20 flex gap-2 lg:top-4 lg:start-9">
-                    <Button type="button" variant="outline" size="icon" asChild>
-                        <a href={kcContext.client?.baseUrl ?? redirectUrlOrigin}>
-                            <FiHome />
-                        </a>
-                    </Button>
-
-                    <Languages />
-
-                    {kcContext.darkMode !== false && <ModeToggle />}
-                </div>
-
-                {/* Mobile header with logo */}
-                <div className="lg:hidden relative pt-8 px-6">
-                    {/* Logo and welcome message */}
-                    <div className="flex flex-col items-center justify-center gap-3 mt-4">
-                        <div className="mb-4 flex items-center gap-3">
-                            <img
-                                src={companylogo}
-                                alt="Logo"
-                                className="w-11 h-auto shrink-0"
-                            />
-                            <span className="text-xl"> {APP_NAME}</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="flex flex-1 items-start lg:items-center justify-center lg:mt-0 ">
-                    <div className="w-full max-w-xl ">
-                        <Card className=" shadow-none bg-transparent lg:bg-card border-0 lg:rounded-lg lg:border lg:shadow-sm rounded-t-2xl">
-                            <CardHeader className="text-center">
-                                <CardTitle>
+            <div className="relative flex min-h-screen flex-col bg-[#fafafa] px-5 py-5 pb-8 dark:bg-background lg:order-2 lg:min-h-0 lg:px-8 lg:py-8">
+                <div className="flex flex-1 items-center justify-center pt-16 lg:pt-10">
+                    <div className="w-full max-w-[29rem]">
+                        <Card className="gap-0 rounded-[1rem] border border-black/5 bg-[#ffffff] py-0 shadow-[0_18px_48px_rgba(15,23,42,0.05)] dark:border-white/10 dark:bg-card dark:shadow-none">
+                            <CardHeader className="px-8 pt-8 pb-6 text-left sm:px-10 sm:pt-10 sm:pb-7">
+                                <div className="mb-8 flex flex-col items-center gap-3 text-center">
+                                    <img
+                                        src={companylogo}
+                                        alt={`${APP_NAME} logo`}
+                                        className="h-auto w-10 shrink-0"
+                                    />
+                                    <span className="text-[0.75rem] font-medium tracking-[0.02em] text-slate-500 dark:text-slate-400">
+                                        {APP_NAME}
+                                    </span>
+                                </div>
+                                <CardTitle className="space-y-2">
                                     {(() => {
                                         const node = !(
                                             auth !== undefined &&
                                             auth.showUsername &&
                                             !auth.showResetCredentials
                                         ) ? (
-                                            <div className="space-y-1">
-                                                <h1 className="text-xl">{headerNode}</h1>
+                                            <div className="space-y-2">
+                                                <h1 className="text-[1.9rem] leading-none font-semibold tracking-[-0.04em] text-slate-950 dark:text-slate-50">
+                                                    {headerNode}
+                                                </h1>
                                                 {subHeaderNode !== null && (
-                                                    <p className="text-sm text-muted-foreground">
+                                                    <p className="text-[0.97rem] leading-6 text-slate-500 dark:text-slate-400">
                                                         {subHeaderNode}
                                                     </p>
                                                 )}
@@ -191,7 +192,7 @@ export function Template(props: {
                                     })()}
                                 </CardTitle>
                             </CardHeader>
-                            <CardContent >
+                            <CardContent className="px-8 pb-8 sm:px-10 sm:pb-10">
                                 <div id="kc-content">
                                     <div id="kc-content-wrapper">
                                         {displayMessage &&
@@ -200,7 +201,7 @@ export function Template(props: {
                                                 !isAppInitiatedAction) && (
                                                 <Alert
                                                     variant={message.type}
-                                                    className="my-3"
+                                                    className="mb-4 rounded-lg border border-slate-200 bg-[#fafafa] text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200"
                                                 >
                                                     <AlertDescription>
                                                         <div>
@@ -237,7 +238,7 @@ export function Template(props: {
                                                         <a
                                                             href="#"
                                                             id="try-another-way"
-                                                            onClick={(event) => {
+                                                            onClick={event => {
                                                                 document.forms[
                                                                     "kc-select-try-another-way-form" as never
                                                                 ].submit();
@@ -251,7 +252,7 @@ export function Template(props: {
                                                 </form>
                                             )}
                                         {displayInfo && (
-                                            <div className="text-center text-sm mt-4">
+                                            <div className="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
                                                 {infoNode}
                                             </div>
                                         )}
@@ -271,14 +272,12 @@ export function Template(props: {
                         className="kc-right-showcase__brand"
                     />
                     <p className="kc-right-showcase__eyebrow">IDENTITY BY DESIGN</p>
-                    <h2 className="kc-right-showcase__title">
-                        {msg("showcaseTitle")}
-                    </h2>
+                    <h2 className="kc-right-showcase__title">{msg("showcaseTitle")}</h2>
                     <p className="kc-right-showcase__description">
                         {msg("showcaseDescription")}
                     </p>
                     <div className="kc-right-showcase__tags">
-                        {SHOWCASE_TAGS.map((tag) => (
+                        {SHOWCASE_TAGS.map(tag => (
                             <span key={tag} className="kc-right-showcase__tag">
                                 {tag}
                             </span>

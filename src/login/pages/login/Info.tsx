@@ -11,12 +11,15 @@ export function Info() {
     const { msg } = useI18n();
 
     return (
-        <div id="kc-registration-container">
+        <div
+            id="kc-registration-container"
+            className="text-sm text-slate-500 dark:text-slate-400"
+        >
             <div id="kc-registration">
                 <span className="space-x-2">
                     {msg("noAccount")}
                     <a
-                        className=" underline underline-offset-4 "
+                        className="font-medium text-slate-700 underline underline-offset-4 dark:text-slate-200"
                         tabIndex={8}
                         href={url.registrationUrl}
                     >
