@@ -1,7 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { useI18n } from "@/login/i18n";
 import { useKcContext } from "@/login/KcContext";
-import { ChevronRight, Fingerprint, Globe, KeyRound, Shield } from "lucide-react";
+import {
+    BadgeCheck,
+    ChevronRight,
+    Fingerprint,
+    Globe,
+    KeyRound,
+    Shield
+} from "lucide-react";
 import { FaKey } from "react-icons/fa";
 import { assert } from "tsafe/assert";
 import { Template } from "../../components/Template";
@@ -12,6 +19,14 @@ const getAuthenticatorIcon = (authSelection: {
 }) => {
     const displayName = authSelection.displayName.toLowerCase();
     const iconClass = authSelection.iconCssClass?.toLowerCase() || "";
+
+    if (
+        displayName.includes("x509") ||
+        displayName.includes("certificate") ||
+        displayName.includes("cert")
+    ) {
+        return <BadgeCheck className="w-5 h-5" />;
+    }
 
     if (
         displayName.includes("webauthn") ||

@@ -227,7 +227,8 @@ export function Template(props: {
                                                 >
                                                     <div
                                                         className={kcClsx(
-                                                            "kcFormGroupClass"
+                                                            "kcFormGroupClass",
+                                                            "mt-5"
                                                         )}
                                                     >
                                                         <input
@@ -238,6 +239,7 @@ export function Template(props: {
                                                         <a
                                                             href="#"
                                                             id="try-another-way"
+                                                            className="inline-flex cursor-pointer rounded-sm text-sm font-medium text-[#2b36c6] underline decoration-2 underline-offset-4 transition-colors hover:text-[#1d268f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2b36c6]/35"
                                                             onClick={event => {
                                                                 document.forms[
                                                                     "kc-select-try-another-way-form" as never
