@@ -2,7 +2,6 @@ import { Languages } from "@/components/langauges";
 import { ModeToggle } from "@/components/theme-toggle";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { redirectUrlOrigin } from "@/login/shared/redirectUrlOrigin";
 import { kcSanitize } from "@keycloakify/login-ui/kcSanitize";
 import { useKcClsx } from "@keycloakify/login-ui/useKcClsx";
@@ -98,8 +97,8 @@ export function Template(props: {
             <div className="relative flex min-h-screen flex-col bg-[#fafafa] px-5 py-5 pb-8 dark:bg-background lg:order-2 lg:min-h-0 lg:px-8 lg:py-8">
                 <div className="flex flex-1 items-center justify-center pt-16 lg:pt-10">
                     <div className="w-full max-w-[29rem]">
-                        <Card className="gap-0 rounded-[1rem] border border-black/5 bg-[#ffffff] py-0 shadow-[0_18px_48px_rgba(15,23,42,0.05)] dark:border-white/10 dark:bg-card dark:shadow-none">
-                            <CardHeader className="px-8 pt-8 pb-6 text-left sm:px-10 sm:pt-10 sm:pb-7">
+                        <div>
+                            <header className="px-8 pt-8 pb-6 text-left sm:px-10 sm:pt-10 sm:pb-7">
                                 <div className="mb-8 flex flex-col items-center gap-3 text-center">
                                     <img
                                         src={companylogo}
@@ -110,7 +109,7 @@ export function Template(props: {
                                         {APP_NAME}
                                     </span>
                                 </div>
-                                <CardTitle className="space-y-2">
+                                <div className="space-y-2">
                                     {(() => {
                                         const node = !(
                                             auth !== undefined &&
@@ -172,27 +171,11 @@ export function Template(props: {
                                             </div>
                                         );
 
-                                        if (displayRequiredFields) {
-                                            return (
-                                                <div className="flex items-center justify-between gap-2">
-                                                    <div>{node}</div>
-                                                    <div>
-                                                        <span className="subtitle">
-                                                            <span className="text-red-500">
-                                                                *
-                                                            </span>
-                                                            {msg("requiredFields")}
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            );
-                                        }
-
                                         return node;
                                     })()}
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent className="px-8 pb-8 sm:px-10 sm:pb-10">
+                                </div>
+                            </header>
+                            <div className="px-8 pb-8 sm:px-10 sm:pb-10">
                                 <div id="kc-content">
                                     <div id="kc-content-wrapper">
                                         {displayMessage &&
@@ -217,6 +200,19 @@ export function Template(props: {
                                                 </Alert>
                                             )}
                                         {socialProvidersNode}
+                                        {displayRequiredFields && (
+                                            <div className="mb-4 flex justify-end">
+                                                <span className="text-xs text-slate-500 dark:text-slate-400">
+                                                    <span
+                                                        className="mr-1 text-red-500"
+                                                        aria-hidden="true"
+                                                    >
+                                                        *
+                                                    </span>
+                                                    {msg("requiredFields")}
+                                                </span>
+                                            </div>
+                                        )}
                                         <div className="children">{children}</div>
                                         {auth !== undefined &&
                                             auth.showTryAnotherWayLink && (
@@ -260,8 +256,8 @@ export function Template(props: {
                                         )}
                                     </div>
                                 </div>
-                            </CardContent>
-                        </Card>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
