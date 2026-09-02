@@ -71,8 +71,8 @@ export function Template(props: {
     useInitializeTemplate();
 
     return (
-        <div className="grid min-h-svh bg-background lg:grid-cols-[minmax(0,1.2fr)_minmax(28rem,0.8fr)]">
-            <section className="order-2 flex min-h-[calc(100svh-9rem)] flex-col gap-8 p-6 md:p-10 lg:min-h-svh">
+        <div className="grid min-h-svh bg-background md:grid-cols-[minmax(16rem,0.85fr)_minmax(28rem,1.15fr)] lg:grid-cols-[minmax(0,1.2fr)_minmax(28rem,0.8fr)]">
+            <section className="relative z-10 order-2 -mt-5 flex min-h-[calc(100svh-7.75rem)] flex-col gap-8 rounded-t-3xl bg-background p-6 shadow-[0_-12px_32px_rgba(0,0,0,0.16)] sm:min-h-[calc(100svh-9.75rem)] md:mt-0 md:min-h-svh md:rounded-none md:p-10 md:shadow-none">
                 <div className="flex items-center justify-between gap-4">
                     <a
                         href={redirectUrlOrigin}
@@ -260,11 +260,11 @@ export function Template(props: {
                 </main>
             </section>
 
-            <aside className="order-1 relative h-36 overflow-hidden bg-black sm:h-44 lg:h-auto">
+            <aside className="order-1 relative h-36 overflow-hidden bg-black sm:h-44 md:h-auto">
                 <img
                     src={`${import.meta.env.BASE_URL}image.png`}
                     alt=""
-                    className="absolute inset-0 h-full w-full object-cover object-[72%_62%] lg:object-[72%_center]"
+                    className="absolute inset-0 h-full w-full object-cover object-[72%_62%] md:object-[70%_center] lg:object-[72%_center]"
                 />
             </aside>
         </div>
