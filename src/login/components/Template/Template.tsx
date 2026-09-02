@@ -15,14 +15,9 @@ import { useSetClassName } from "keycloakify/tools/useSetClassName";
 import { RotateCcw } from "lucide-react";
 import type { ReactNode } from "react";
 import { useEffect } from "react";
-import { FiHome } from "react-icons/fi";
 import { useI18n } from "../../i18n";
 import { useKcContext } from "../../KcContext";
-import companylogo from "./../../assets/img/auth-logo.svg";
 import { useInitializeTemplate } from "./useInitializeTemplate";
-
-const APP_NAME = "Lamassu IoT";
-const SHOWCASE_TAGS = ["#OPENSOURCE", "#INDUSTRY 4.0", "#CYBER SECURE OT"];
 
 export function Template(props: {
     displayInfo?: boolean;
@@ -75,40 +70,43 @@ export function Template(props: {
 
     useInitializeTemplate();
 
-    console.log("kcContext", kcContext);
-    console.log("kcContext.client?.baseUrl", kcContext.client?.baseUrl);
-    console.log("redirectUrlOrigin", redirectUrlOrigin);
-
     return (
-        <div className="relative grid min-h-svh bg-white dark:bg-background lg:grid-cols-2">
-            <div className="absolute top-4 left-4 z-20 flex gap-2 lg:top-4 lg:left-9">
-                <Button type="button" variant="outline" size="icon" asChild>
-                    <a href={redirectUrlOrigin}>
-                        <FiHome />
+        <div className="grid min-h-svh bg-background lg:grid-cols-[minmax(0,1.2fr)_minmax(28rem,0.8fr)]">
+            <section className="order-2 flex min-h-[calc(100svh-9rem)] flex-col gap-8 p-6 md:p-10 lg:min-h-svh">
+                <div className="flex items-center justify-between gap-4">
+                    <a
+                        href={redirectUrlOrigin}
+                        className="flex flex-col items-start gap-1.5 rounded-md outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
+                    >
+                        <span
+                            role="img"
+                            aria-label="Lamassu IoT"
+                            className="block h-[1.1875rem] w-40 bg-primary dark:bg-foreground"
+                            style={{
+                                WebkitMaskImage: `url(${import.meta.env.BASE_URL}lamassu-brand.png)`,
+                                maskImage: `url(${import.meta.env.BASE_URL}lamassu-brand.png)`,
+                                WebkitMaskPosition: "left center",
+                                maskPosition: "left center",
+                                WebkitMaskRepeat: "no-repeat",
+                                maskRepeat: "no-repeat",
+                                WebkitMaskSize: "contain",
+                                maskSize: "contain"
+                            }}
+                        />
+                        <span className="text-[0.625rem] font-semibold tracking-[0.2em] text-muted-foreground">
+                            IDENTITY BY DESIGN
+                        </span>
                     </a>
-                </Button>
+                    <div className="flex items-center gap-2">
+                        <Languages />
+                        {kcContext.darkMode !== false && <ModeToggle />}
+                    </div>
+                </div>
 
-                <Languages />
-
-                {kcContext.darkMode !== false && <ModeToggle />}
-            </div>
-
-            {/* Main content */}
-            <div className="relative flex min-h-screen flex-col bg-[#fafafa] px-5 py-5 pb-8 dark:bg-background lg:order-2 lg:min-h-0 lg:px-8 lg:py-8">
-                <div className="flex flex-1 items-center justify-center pt-16 lg:pt-10">
-                    <div className="w-full max-w-[29rem]">
+                <main className="flex flex-1 items-center justify-center py-8">
+                    <div className="w-full max-w-sm">
                         <div>
-                            <header className="px-8 pt-8 pb-6 text-left sm:px-10 sm:pt-10 sm:pb-7">
-                                <div className="mb-8 flex flex-col items-center gap-3 text-center">
-                                    <img
-                                        src={companylogo}
-                                        alt={`${APP_NAME} logo`}
-                                        className="h-auto w-10 shrink-0"
-                                    />
-                                    <span className="text-[0.75rem] font-medium tracking-[0.02em] text-slate-500 dark:text-slate-400">
-                                        {APP_NAME}
-                                    </span>
-                                </div>
+                            <header className="mb-8 text-center">
                                 <div className="space-y-2">
                                     {(() => {
                                         const node = !(
@@ -117,11 +115,11 @@ export function Template(props: {
                                             !auth.showResetCredentials
                                         ) ? (
                                             <div className="space-y-2">
-                                                <h1 className="text-[1.9rem] leading-none font-semibold tracking-[-0.04em] text-slate-950 dark:text-slate-50">
+                                                <h1 className="text-2xl font-bold tracking-tight text-foreground">
                                                     {headerNode}
                                                 </h1>
                                                 {subHeaderNode !== null && (
-                                                    <p className="text-[0.97rem] leading-6 text-slate-500 dark:text-slate-400">
+                                                    <p className="text-balance text-sm text-muted-foreground">
                                                         {subHeaderNode}
                                                     </p>
                                                 )}
@@ -175,7 +173,7 @@ export function Template(props: {
                                     })()}
                                 </div>
                             </header>
-                            <div className="px-8 pb-8 sm:px-10 sm:pb-10">
+                            <div>
                                 <div id="kc-content">
                                     <div id="kc-content-wrapper">
                                         {displayMessage &&
@@ -184,7 +182,7 @@ export function Template(props: {
                                                 !isAppInitiatedAction) && (
                                                 <Alert
                                                     variant={message.type}
-                                                    className="mb-4 rounded-lg border border-slate-200 bg-[#fafafa] text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200"
+                                                    className="mb-4"
                                                 >
                                                     <AlertDescription>
                                                         <div>
@@ -202,9 +200,9 @@ export function Template(props: {
                                         {socialProvidersNode}
                                         {displayRequiredFields && (
                                             <div className="mb-4 flex justify-end">
-                                                <span className="text-xs text-slate-500 dark:text-slate-400">
+                                                <span className="text-xs text-muted-foreground">
                                                     <span
-                                                        className="mr-1 text-red-500"
+                                                        className="mr-1 text-destructive"
                                                         aria-hidden="true"
                                                     >
                                                         *
@@ -235,7 +233,7 @@ export function Template(props: {
                                                         <a
                                                             href="#"
                                                             id="try-another-way"
-                                                            className="inline-flex cursor-pointer rounded-sm text-sm font-medium text-[#2b36c6] underline decoration-2 underline-offset-4 transition-colors hover:text-[#1d268f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2b36c6]/35"
+                                                            className="inline-flex cursor-pointer rounded-sm text-sm font-medium text-primary underline-offset-4 outline-none hover:underline focus-visible:ring-[3px] focus-visible:ring-ring/50"
                                                             onClick={event => {
                                                                 document.forms[
                                                                     "kc-select-try-another-way-form" as never
@@ -250,7 +248,7 @@ export function Template(props: {
                                                 </form>
                                             )}
                                         {displayInfo && (
-                                            <div className="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
+                                            <div className="mt-6 text-center text-sm text-muted-foreground">
                                                 {infoNode}
                                             </div>
                                         )}
@@ -259,30 +257,16 @@ export function Template(props: {
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </main>
+            </section>
 
-            <div className="kc-right-showcase relative hidden overflow-hidden lg:block lg:order-1">
-                <div className="kc-right-showcase__content mt-5">
-                    <img
-                        src={`${import.meta.env.BASE_URL}lamassu-brand.png`}
-                        alt="Lamassu IoT"
-                        className="kc-right-showcase__brand"
-                    />
-                    <p className="kc-right-showcase__eyebrow">IDENTITY BY DESIGN</p>
-                    <h2 className="kc-right-showcase__title">{msg("showcaseTitle")}</h2>
-                    <p className="kc-right-showcase__description">
-                        {msg("showcaseDescription")}
-                    </p>
-                    <div className="kc-right-showcase__tags">
-                        {SHOWCASE_TAGS.map(tag => (
-                            <span key={tag} className="kc-right-showcase__tag">
-                                {tag}
-                            </span>
-                        ))}
-                    </div>
-                </div>
-            </div>
+            <aside className="order-1 relative h-36 overflow-hidden bg-black sm:h-44 lg:h-auto">
+                <img
+                    src={`${import.meta.env.BASE_URL}image.png`}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover object-[72%_62%] lg:object-[72%_center]"
+                />
+            </aside>
         </div>
     );
 }
